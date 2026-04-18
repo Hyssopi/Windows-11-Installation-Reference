@@ -4,6 +4,7 @@ Windows 11 Pro installation setup references.
 ## Before Installation
 - Do not use Legacy Boot into USB, otherwise it will not fulfill system requirements to install Windows 11. You need to boot via UEFI.
 - Do not connect the ethernet cable. You cannot change Personalize settings after Windows connects to the activation server.
+- Do not enable Legacy USB otherwise it cannot read/boot the Windows installer in the USB flash drive. Legacy USB should be set to UEFI-only in the BIOS.
 
 ## During Installation
 - Bypass Microsoft account creation when it asks you to connect to the internet.
