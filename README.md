@@ -55,3 +55,6 @@ Windows 11 Pro installation setup references.
     ```
     AmbientLightingEnabled = 0
     ```
+
+## Miscellaneous Notes
+- `VBSCRIPT` may be required to install `Epic Games Launcher`, in: Settings > System > Optional features > View features
