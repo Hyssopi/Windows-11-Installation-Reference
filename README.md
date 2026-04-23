@@ -13,6 +13,7 @@ Windows 11 Pro installation setup references.
     start ms-cxh:localonly
     ```
     To be able to create a local account.
+- Do not create a password while making the account. It will ask you for security questions if you make a password now. Make a password later, which will not require security questions.
 
 ## After Installation
 1. While you have no internet: change your Personalize settings
