@@ -8,7 +8,7 @@ Windows 11 Pro installation setup references.
 
 ## During Installation
 - Bypass Microsoft account creation when it asks you to connect to the internet.
-    - `Shift+F10` to open command prompt.
+    - `Shift+F10` to open Command Prompt.
     ```
     start ms-cxh:localonly
     ```
@@ -18,17 +18,13 @@ Windows 11 Pro installation setup references.
 ## After Installation
 1. While you have no internet: change your Personalize settings
 1. Personalize > Taskbar > When using multiple displays... is greyed out because graphics drivers aren't installed yet so Windows can only recognize one monitor for now. This is okay, we can fix this later.
-1. To remove: Lock Screen Weather widget
-    1. Optimal, might work:
-        1. With ethernet still disconnected, keep restarting PC
-        1. Settings > Personalization > Lock Screen > Lock screen status: None
-        1. For some reason, the Lock screen status keeps changing to "Weather" after a PC restart. Keep changing it back to "None" and then keep restarting PC until it stops changing
-        1. If not, then connect the ethernet cable to the PC but without internet (maybe disconnect the ethernet cable between the modem and router?)
-    1. Last resort:
-        1. Open cmd as administrator:
-        ```
-        winget uninstall "windows web experience pack"
-        ```
+1. Remove Lock Screen Weather widget
+    1. Open Command Prompt:
+    ```
+    winget uninstall "windows web experience pack"
+    ```
+    1. Go to Settings > Apps > Installed apps
+    1. Uninstall `Windows Package Manager Source (winget) V2`
 1. When Personalize settings are all set and ready: connect the ethernet cable to go online
 1. Windows Update to download all the drivers
 1. Multiple monitors should now be recognized
@@ -58,4 +54,19 @@ Windows 11 Pro installation setup references.
     ```
 
 ## Miscellaneous Notes
+- Disk drive commands
+    - Command Prompt
+    ```
+    wmic diskdrive get * /format:list
+    ```
+    - Powershell
+    ```
+    Get-PhysicalDisk | Select FriendlyName, HealthStatus, OperationalStatus
+    Get-PhysicalDisk | Get-StorageReliabilityCounter | Format-List
+    Get-PhysicalDisk | Get-StorageHistory | Format-List
+    Get-PhysicalDisk | Get-StorageAdvancedProperty
+    Get-PhysicalDisk | Format-List -Force
+    Get-PhysicalDisk | Format-List * -force
+    Get-PhysicalDisk | Get-StorageSubSystem  | Format-List
+    ```
 - `VBSCRIPT` may be required to install `Epic Games Launcher`, in: Settings > System > Optional features > View features
