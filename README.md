@@ -23,8 +23,8 @@ Windows 11 Pro installation setup references.
     ```
     winget uninstall "windows web experience pack"
     ```
-    1. Go to Settings > Apps > Installed apps
-    1. Uninstall `Windows Package Manager Source (winget) V2`
+    ii. Go to Settings > Apps > Installed apps
+    iii. Uninstall `Windows Package Manager Source (winget) V2`
 1. When Personalize settings are all set and ready: connect the ethernet cable to go online
 1. Windows Update to download all the drivers
 1. Multiple monitors should now be recognized
