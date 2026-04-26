@@ -59,7 +59,7 @@ Windows 11 Pro installation setup references.
     ```
     wmic diskdrive get * /format:list
     ```
-    - Powershell
+    - PowerShell
     ```
     Get-PhysicalDisk | Select FriendlyName, HealthStatus, OperationalStatus
     Get-PhysicalDisk | Get-StorageReliabilityCounter | Format-List
