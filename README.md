@@ -18,6 +18,11 @@ Windows 11 Pro installation setup references.
 ## After Installation
 1. While you have no internet: change your Personalize settings
 1. Personalize > Taskbar > When using multiple displays... is greyed out because graphics drivers aren't installed yet so Windows can only recognize one monitor for now. This is okay, we can fix this later.
+1. When Personalize settings are all set and ready: connect the ethernet cable to go online
+1. Windows Update to download all the drivers
+1. Multiple monitors should now be recognized
+1. Activation has been checked and now blocks you from changing Personalize settings
+1. However, for some reason, you are still allowed to change the multiple displays settings in Personalize > Taskbar
 1. Remove Lock Screen Weather widget
     1. Open Command Prompt:
     ```
@@ -25,11 +30,6 @@ Windows 11 Pro installation setup references.
     ```
     2. Go to Settings > Apps > Installed apps
     3. Uninstall `Windows Package Manager Source (winget) V2`
-1. When Personalize settings are all set and ready: connect the ethernet cable to go online
-1. Windows Update to download all the drivers
-1. Multiple monitors should now be recognized
-1. Activation has been checked and now blocks you from changing Personalize settings
-1. However, for some reason, you are still allowed to change the multiple displays settings in Personalize > Taskbar
 
 ## For VMs
 - Personalization > Colors
