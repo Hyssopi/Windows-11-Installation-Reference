@@ -6,11 +6,11 @@ Windows 11 Pro installation setup references.
 - Do not connect the ethernet cable. You cannot change Personalize settings after Windows connects to the activation server.
 - Do not enable Legacy USB otherwise it cannot read/boot the Windows installer in the USB flash drive. Legacy USB should be set to UEFI-only in the BIOS.
 - It is possible to get a `0xc0000098` error when trying to boot a USB flash drive containing the Windows installer. This may be due to "Legacy Boot into USB" or "Legacy USB" not being disabled in the BIOS.
-  However, you may still get that error even after you disable it. In that case, re-create the Windows installer in the USB flash drive using the same method as before (Media Creation Tool). It may be due to the USB flash drive being larger than 32 GB? Not sure, but re-creating the USB flash drive Windows installer with Media Creation Tool did resolve the issue.
-  For it to work, it looks like the USB flash drive needs to be separated into two partitions when larger than 32 GB, for example for a 256 GB USB flash drive:
-  1. 32 GB, containing the installation files
-  2. 199 GB, unallocated
-  Afterwards you have to go to Disk Management to wipe the USB flash drive and recombine the partitions.
+    However, you may still get that error even after you disable it. In that case, re-create the Windows installer in the USB flash drive using the same method as before (Media Creation Tool). It may be due to the USB flash drive being larger than 32 GB? Not sure, but re-creating the USB flash drive Windows installer with Media Creation Tool did resolve the issue.
+    For it to work, it looks like the USB flash drive needs to be separated into two partitions when larger than 32 GB, for example for a 256 GB USB flash drive:
+    1\. 32 GB, containing the installation files
+    2\. 199 GB, unallocated
+    Afterwards you have to go to Disk Management to wipe the USB flash drive and recombine the partitions.
 
 ## During Installation
 - Bypass Microsoft account creation when it asks you to connect to the internet.
