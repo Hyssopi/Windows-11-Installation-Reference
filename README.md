@@ -111,6 +111,7 @@ Windows 11 Pro installation setup references.
 1. On Host: Open PowerShell as administrator
 
 1. On Host: Run script to add GPU partition to VM.
+
     Modify $vm to VM name in Hyper-V Manager:
     ```
     $vm = "t-VM-01"
@@ -126,7 +127,9 @@ Windows 11 Pro installation setup references.
 
 1. On Host: Start VM in Hyper-V Manager
 
-1. On VM: Check Device Manager and Task Manager. Should have the graphics card shown. However, if the graphics card shown is the integrated GPU (for example: "AMD Radeon(TM) Graphics") then we must find and add the second GPU.
+1. On VM: Check Device Manager and Task Manager. Should have the graphics card shown.
+
+    However, if the graphics card shown is the integrated GPU (for example: "AMD Radeon(TM) Graphics") then we must find and add the second GPU.
 
 1. On VM: Shut down
 
@@ -137,6 +140,7 @@ Windows 11 Pro installation setup references.
     Copy the second name.
 
 1. On Host, run in PowerShell:
+
     Replace the `InstancePath` with the second name in the previous step.
     ```
     Remove-VMGpuPartitionAdapter -VMName $vm
