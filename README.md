@@ -86,6 +86,7 @@ Windows 11 Pro installation setup references.
 1. Disable VM checkpoints, if enabled.
 
 1. Copy GPU drivers from Host to VM.
+
     On Host, copy:
     ```
     C:\Windows\System32\DriverStore\FileRepository\nv_dispig.inf_amd64_5d5c294bb8d17217
