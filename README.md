@@ -112,7 +112,7 @@ Windows 11 Pro installation setup references.
 
 1. On Host: Run script to add GPU partition to VM.
 
-    Modify $vm to VM name in Hyper-V Manager:
+    Modify `$vm` to VM name in Hyper-V Manager:
     ```
     $vm = "t-VM-01"
     if (Get-VMGpuPartitionAdapter -VMName $vm -ErrorAction SilentlyContinue) {
