@@ -81,3 +81,71 @@ Windows 11 Pro installation setup references.
     Get-PhysicalDisk | Get-StorageSubSystem  | Format-List
     ```
 - `VBSCRIPT` may be required to install `Epic Games Launcher`, in: Settings > System > Optional features > View features
+
+## Setup GPU Paravirtualization on a Hyper-V VM
+1. Disable VM checkpoints, if enabled.
+
+1. Copy GPU drivers from Host to VM.
+    On Host, copy:
+    ```
+    C:\Windows\System32\DriverStore\FileRepository\nv_dispig.inf_amd64_5d5c294bb8d17217
+    ```
+    Paste to VM:
+    ```
+    C:\Windows\System32\HostDriverStore\FileRepository\nv_dispig.inf_amd64_5d5c294bb8d17217
+    ```
+    Create folders on VM as needed.
+
+1. On Host, copy all files starting with `nv` in:
+    ```
+    C:\Windows\System32
+    ```
+    Paste to VM in:
+    ```
+    C:\Windows\System32
+    ```
+
+1. On VM: Shut down
+
+1. On Host: Open PowerShell as administrator
+
+1. On Host: Run script to add GPU partition to VM.
+    Modify $vm to VM name in Hyper-V Manager:
+    ```
+    $vm = "t-VM-01"
+    if (Get-VMGpuPartitionAdapter -VMName $vm -ErrorAction SilentlyContinue) {
+        Remove-VMGpuPartitionAdapter -VMName $vm
+    }
+    Set-VM -GuestControlledCacheTypes $true -VMName $vm
+    Set-VM -LowMemoryMappedIoSpace 1Gb -VMName $vm
+    Set-VM -HighMemoryMappedIoSpace 32Gb -VMName $vm
+    Add-VMGpuPartitionAdapter -VMName $vm
+    ```
+    Paste and run in PowerShell.
+
+1. On Host: Start VM in Hyper-V Manager
+
+1. On VM: Check Device Manager and Task Manager. Should have the graphics card shown. However, if the graphics card shown is the integrated GPU (for example: "AMD Radeon(TM) Graphics") then we must find and add the second GPU.
+
+1. On VM: Shut down
+
+1. On Host, run in PowerShell to get the GPU InstancePath:
+    ```
+    Get-VMHostPartitionableGpu | Select-Object Name
+    ```
+    Copy the second name.
+
+1. On Host, run in PowerShell:
+    Replace the `InstancePath` with the second name in the previous step.
+    ```
+    Remove-VMGpuPartitionAdapter -VMName $vm
+    Add-VMGpuPartitionAdapter -VMName $vm -InstancePath "\\?\PCI#VEN_10DE&DEV_2684&SUBSYS_162C10DE&REV_A1#4&2255b23f&0&0008#{06c3a105-2487-4369-923f-275c6c06830d}\GPUPARAV"
+    ```
+
+1. On Host: Start VM in Hyper-V Manager
+
+1. On VM: Check Device Manager and Task Manager. Should have the correct graphics card shown.
+
+- Reference:
+    - https://www.youtube.com/watch?v=XLLcc29EZ_8
+    - https://www.youtube.com/watch?v=KDc8lbE2I6I
